@@ -7,6 +7,9 @@ import uploadRouter from "./routes/Upload.Data.Route.ts";
 import orderRouter from "./routes/Order.Routes.ts";
 import { serve } from "inngest/express";
 import { inngest, functions } from './Inngest/index.ts'
+import addressRouter from "./routes/Address.Routes.ts";
+import adminRouter from "./routes/Admin.Routes.ts";
+import deliveryPartnerRouter from "./routes/DeliveryPartner.Routes.ts";
 
 const app = express()
 app.use(cors())
@@ -21,6 +24,9 @@ app.use('/api/v1/products', productRouter)
 app.use('/api/v1/upload', uploadRouter)
 app.use('/api/v1/orders', orderRouter)
 app.use("/api/v1/inngest", serve({ client: inngest, functions }));
+app.use('/api/v1/address', addressRouter)
+app.use('/api/v1/admin', adminRouter)
+app.use('/api/v1/delivery', deliveryPartnerRouter)
 
 app.use(errorHandler);
 
